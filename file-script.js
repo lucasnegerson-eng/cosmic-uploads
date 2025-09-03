@@ -1,4 +1,4 @@
-const API_BASE_FILE = 'https://your-render-app.onrender.com'; // Replace with your Render URL
+const API_BASE_FILE = 'https://cosmic-uploads.onrender.com'; // Replace with your Render URL
 const FRONTEND_BASE_FILE = 'https://lucasnegerson-eng.github.io/cosmic-uploads'; // Replace with your GitHub Pages URL
 
 // Get file ID from URL
