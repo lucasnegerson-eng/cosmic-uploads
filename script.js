@@ -1,4 +1,4 @@
-const API_BASE = 'https://your-render-app.onrender.com'; // Replace with your Render URL
+const API_BASE = 'https://cosmic-uploads.onrender.com'; // Replace with your Render URL
 const FRONTEND_BASE = 'https://yourusername.github.io/cosmic-uploads'; // Replace with your GitHub Pages URL
 
 const uploadZone = document.getElementById('uploadZone');
