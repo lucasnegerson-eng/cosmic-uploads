@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download - Cosmic Uploads</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Auto-redirect to download
+        window.onload = function() {
+            const pathParts = window.location.pathname.split('/');
+            const fileId = pathParts[pathParts.length - 1];
+
+            if (fileId) {
+                const API_BASE = 'https://your-render-app.onrender.com';
+                window.location.href = `${API_BASE}/api/download/${fileId}`;
+            } else {
+                document.getElementById('errorText').textContent = 'Invalid download link';
+                document.getElementById('errorSection').style.display = 'block';
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><a href="index.html">🌌 Cosmic Uploads</a></h1>
+        </header>
+
+        <main>
+            <div class="loading">
+                <div class="spinner"></div>
+                <p>Starting download...</p>
+            </div>
+
+            <div class="error-section" id="errorSection" style="display: none;">
+                <div class="error-message">
+                    <h3>❌ Download Failed</h3>
+                    <p id="errorText">Unable to download file.</p>
+                    <a href="index.html" class="retry-btn">Go Home</a>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Uploads - Secure File Sharing</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌌 Cosmic Uploads</h1>
+            <p>Secure file sharing that expires in 24 hours</p>
+        </header>
+
+        <main>
+            <div class="upload-section">
+                <div class="upload-zone" id="uploadZone">
+                    <div class="upload-icon">📁</div>
+                    <h3>Drop your file here</h3>
+                    <p>Or click to select a file</p>
+                    <p class="size-limit">Maximum file size: 1GB</p>
+                    <input type="file" id="fileInput" hidden>
+                </div>
+
+                <div class="progress-section" id="progressSection" style="display: none;">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <p id="progressText">Uploading...</p>
+                </div>
+
+                <div class="result-section" id="resultSection" style="display: none;">
+                    <div class="success-message">
+                        <h3>✅ Upload Complete!</h3>
+                        <div class="file-info">
+                            <p><strong>File ID:</strong> <span id="fileId"></span></p>
+                            <p><strong>Expires:</strong> <span id="expiresAt"></span></p>
+                        </div>
+                        <div class="links">
+                            <div class="link-group">
+                                <label>Share Link:</label>
+                                <div class="link-container">
+                                    <input type="text" id="shareLink" readonly>
+                                    <button onclick="copyLink('shareLink')" class="copy-btn">Copy</button>
+                                </div>
+                            </div>
+                            <div class="link-group">
+                                <label>Direct Download:</label>
+                                <div class="link-container">
+                                    <input type="text" id="downloadLink" readonly>
+                                    <button onclick="copyLink('downloadLink')" class="copy-btn">Copy</button>
+                                </div>
+                            </div>
+                        </div>
+                        <button onclick="resetUpload()" class="new-upload-btn">Upload Another File</button>
+                    </div>
+                </div>
+
+                <div class="error-section" id="errorSection" style="display: none;">
+                    <div class="error-message">
+                        <h3>❌ Upload Failed</h3>
+                        <p id="errorText"></p>
+                        <button onclick="resetUpload()" class="retry-btn">Try Again</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Files are automatically deleted after 24 hours • No logs or analytics • HTTPS encrypted</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

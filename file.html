@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File - Cosmic Uploads</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><a href="index.html">🌌 Cosmic Uploads</a></h1>
+        </header>
+
+        <main>
+            <div class="file-page" id="filePage">
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Loading file information...</p>
+                </div>
+
+                <div class="file-info-section" id="fileInfoSection" style="display: none;">
+                    <div class="file-header">
+                        <h2 id="fileName">File Name</h2>
+                        <div class="file-meta">
+                            <span id="fileSize">Size</span> •
+                            <span id="uploadTime">Uploaded</span> •
+                            <span id="expiresIn">Expires in</span>
+                        </div>
+                    </div>
+
+                    <div class="file-preview" id="filePreview">
+                        <!-- Preview will be inserted here -->
+                    </div>
+
+                    <div class="file-actions">
+                        <button onclick="downloadFile()" class="download-btn">
+                            <span>⬇️ Download File</span>
+                        </button>
+                        <button onclick="shareFile()" class="share-btn">
+                            <span>🔗 Share</span>
+                        </button>
+                    </div>
+
+                    <div class="share-section" id="shareSection" style="display: none;">
+                        <h3>Share this file</h3>
+                        <div class="link-group">
+                            <label>Share Link:</label>
+                            <div class="link-container">
+                                <input type="text" id="shareLink" readonly>
+                                <button onclick="copyLink('shareLink')" class="copy-btn">Copy</button>
+                            </div>
+                        </div>
+                        <div class="link-group">
+                            <label>Direct Download:</label>
+                            <div class="link-container">
+                                <input type="text" id="downloadLink" readonly>
+                                <button onclick="copyLink('downloadLink')" class="copy-btn">Copy</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="error-section" id="errorSection" style="display: none;">
+                    <div class="error-message">
+                        <h3>❌ File Not Found</h3>
+                        <p id="errorText">This file may have expired or been removed.</p>
+                        <a href="index.html" class="retry-btn">Upload a New File</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="file-script.js"></script>
+</body>
+</html>
