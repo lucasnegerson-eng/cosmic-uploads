@@ -14,18 +14,7 @@ const FRONTEND_URL = process.env.FRONTEND_URL || 'https://cosmic-uploads.vercel.
 app.use(helmet());
 
 // Dynamic CORS
-const allowedOrigins = [
-    FRONTEND_URL,
-    'http://localhost:3000', // local dev
-];
-app.use(cors({
-    origin: (origin, callback) => {
-        if (!origin) return callback(null, true); // allow non-browser requests
-        if (allowedOrigins.includes(origin)) callback(null, true);
-        else callback(new Error('Not allowed by CORS'));
-    },
-    credentials: true
-}));
+app.use(cors());
 
 app.options('*', cors()); // preflight support
 app.use(express.json());
