@@ -8,7 +8,7 @@ const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const FRONTEND_URL = process.env.FRONTEND_URL || 'https://lucasnegerson-eng.github.io/cosmic-uploads';
+const FRONTEND_URL = process.env.FRONTEND_URL || 'https://cosmic-uploads.vercel.app';
 
 // Security middleware
 app.use(helmet());
