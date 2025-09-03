@@ -169,12 +169,14 @@ app.get('/api/health', (req, res) => res.json({ status: 'OK', timestamp: new Dat
 app.get('/file/:fileId', async (req, res) => {
     const { fileId } = req.params;
     const metadata = fileMetadata.get(fileId);
+
     if (!metadata) return res.status(404).send('File not found');
 
     const title = metadata.originalName;
     const description = `File: ${metadata.originalName} • Size: ${(metadata.size/(1024*1024)).toFixed(2)} MB • Expires in 24h`;
     const image = metadata.mimetype.startsWith('image/') ? `${req.protocol}://${req.get('host')}/api/preview/${fileId}` : '';
 
+    // Send OG tags for Discord/Twitter embeds
     res.send(`
         <!DOCTYPE html>
         <html lang="en">
@@ -184,8 +186,8 @@ app.get('/file/:fileId', async (req, res) => {
             <meta property="og:description" content="${description}" />
             ${image ? `<meta property="og:image" content="${image}" />` : ''}
             <meta name="twitter:card" content="${image ? 'summary_large_image' : 'summary'}" />
-            <title>${title}</title>
             <meta http-equiv="refresh" content="0; url=${FRONTEND_URL}/file.html?id=${fileId}" />
+            <title>${title}</title>
         </head>
         <body>
             Redirecting to file page...
@@ -193,6 +195,7 @@ app.get('/file/:fileId', async (req, res) => {
         </html>
     `);
 });
+
 
 // Start server
 app.listen(PORT, () => {
